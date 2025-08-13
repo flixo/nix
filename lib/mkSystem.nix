@@ -1,4 +1,4 @@
-{ nixpkgs, overlays, disko, inputs, nixos-hardware, }:
+{ nixpkgs, overlays, inputs, nixos-hardware }:
 
   name: { system ? "x86_64-linux", user ? "jensnomtak", gui ? false, extraModules ? [ ], }:
 

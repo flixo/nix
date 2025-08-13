@@ -1,0 +1,16 @@
+.netrwhist
+.rbx
+tags
+.kitchen
+.rvm
+*.zwc
+zsh/antigen.zsh
+zsh/cache
+vim/vim/plugged
+vim/plug.vim
+.vagrant
+neovim/plugin
+neovim/**/.luarc.json
+*.swp
+/.direnv
+/result
