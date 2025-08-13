@@ -25,7 +25,7 @@
             nix-flatpak.nixosModules.nix-flatpak
           ];
         };
-        nixos-vm-hyperv = mkSystem "nixos-vm-hyperv" {
+        nix-vm-hyperv = mkSystem "nix-vm-hyperv" {
           extraModules = [
             nix-flatpak.nixosModules.nix-flatpak
           ];
