@@ -3,6 +3,7 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/virtualisation/hyperv-guest.nix")
     ./hardware-configuration.nix
     ./../wayland.nix
   ];
@@ -10,6 +11,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  virtualisation.hypervGuest.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -38,13 +41,31 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+
+  # Enable the KDE Plasma Desktop Environment.
+  # services.displayManager.sddm.enable = false;
+  services.desktopManager.plasma6.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
+        user = "jensnomtak";
+      };
+    };
+  };
+  
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma6.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.xrdp.enable = true;
+  # services.xrdp.defaultWindowManager = "startplasma-x11";
+  # services.xrdp.openFirewall = true;
+  
 
   # Configure keymap in X11
   services.xserver.xkb = {
